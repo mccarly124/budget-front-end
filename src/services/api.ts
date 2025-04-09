@@ -1,7 +1,7 @@
-const API_URL = 'http://localhost:8080/list';
+const API_URL = 'http://localhost:8080/grocery';
 
 export const getTransactions = async (): Promise<GroceryTransaction[]> => {
-  const response = await fetch(`${API_URL}/grocery`);
+  const response = await fetch(`${API_URL}/get`);
   if (!response.ok) {
     throw new Error('Failed to fetch transactions');
   }
@@ -9,7 +9,7 @@ export const getTransactions = async (): Promise<GroceryTransaction[]> => {
 };
 
 export const addTransaction = async (transaction: NewGroceryTransaction): Promise<GroceryTransaction> => {
-  const response = await fetch(`${API_URL}/add`, {
+  const response = await fetch(`${API_URL}/post`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
