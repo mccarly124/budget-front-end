@@ -1,14 +1,13 @@
 import styles from './Grocery.module.css'
-import GroceryTransactionComponent from './components/GroceryTransactionComponent';
+import AppRouter from './routes/AppRouter';
 
 function Grocery() {
   return (
     <>
     <div className={styles.Grocery}>
-    <h1>Grocery Transactions</h1>
-      <GroceryTransactionComponent />
+      <AppRouter />
     </div>
     </>
   )
 }
-export default Grocery
+export default Grocery;

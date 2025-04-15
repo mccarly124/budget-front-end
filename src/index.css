@@ -2,6 +2,10 @@
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 600;
+  
+  display:flex;
+  justify-content: center;
+  align-items: center;
 
   color-scheme: light dark;
   color: rgba(90, 15, 15, 0.87);
@@ -26,3 +30,8 @@ h1 {
   line-height: 1;
 }
 
+.divider{
+  width:10px;
+  height:auto;
+  display:inline-block;
+}

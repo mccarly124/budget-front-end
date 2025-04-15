@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { addTransaction, getTransactions } from '../services/api.ts';
-import styles from './GroceryTransactionComponent.module.css';
+import styles from '../styles/GroceryTransactionComponent.module.css';
+
 
 type GroceryTransaction = {
   id: number;
@@ -12,6 +13,7 @@ type GroceryTransaction = {
 };
 
 type NewGroceryTransaction = Omit<GroceryTransaction, 'id'>;
+
 
 
 const GroceryTransactionComponent = () => {
@@ -76,7 +78,9 @@ const GroceryTransactionComponent = () => {
 
   return (
     <div>
+      <h1>Grocery Transactions</h1>
       <div className={styles.formContainer}>
+        
       <form className={styles.form} onSubmit={handleSubmit}>
         <label>
           Name:
@@ -158,6 +162,8 @@ const GroceryTransactionComponent = () => {
         </tbody>
       </table>
     </div>
+
+
 
     </div>
     
