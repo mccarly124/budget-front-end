@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { addTransaction, getTransactions } from '../services/api.ts';
+import { addTransaction, getTransactions } from '../services/groceryapi.ts';
 import styles from '../styles/GroceryTransactionComponent.module.css';
 
 
@@ -35,6 +35,7 @@ const GroceryTransactionComponent = () => {
         setTransactions(data);
       } catch (error) {
         console.error('Error fetching transactions:', error);
+        const err = error;
       } finally {
         setLoading(false);
       }
@@ -79,6 +80,8 @@ const GroceryTransactionComponent = () => {
   return (
     <div>
       <h1>Grocery Transactions</h1>
+      <h2>Hey
+      </h2>
       <div className={styles.formContainer}>
         
       <form className={styles.form} onSubmit={handleSubmit}>
