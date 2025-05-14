@@ -16,7 +16,7 @@ const IncomeComponent = () => {
     periodStart: '',
     periodEnd: ''
   });
-  const [errorMessages, setErrorMessages] = useState<string[]>([]);
+
 
 
 
@@ -27,13 +27,6 @@ const IncomeComponent = () => {
         getTransactions(data);
       } catch (error: any) {
         console.error('Error fetching income:', error);
-        const status = error?.status ?? error?.response?.status;
-        const message = error?.message ?? error?.toString?.() ?? 'Unknown error';
-      
-        setErrorMessages(prev => [
-          ...prev,
-          status ? `(${status}) ${message}` : message
-        ]);
       } finally {
         setLoading(false);
       }
@@ -54,7 +47,7 @@ const IncomeComponent = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setErrorMessages([]);
+
     try {
       const newTrans = await addIncome(newTransaction);
       getTransactions((prev) => [...prev, newTrans]);
@@ -68,10 +61,6 @@ const IncomeComponent = () => {
 
     } catch (error: any) {
       console.error('Error adding transaction:', error);
-      setErrorMessages(prev => [
-        ...prev,
-        error?.message ?? error?.toString?.() ?? 'Unknown error adding transaction'
-      ]);
     }
   };
 
@@ -80,18 +69,6 @@ const IncomeComponent = () => {
   return (
     <div>
       <h1>Income</h1>
-      <h2>
-      {errorMessages.length > 0 && (
-  <div className={styles.error}>
-    <strong>Errors:</strong>
-    <ul>
-      {errorMessages.map((msg, idx) => (
-        <li key={idx}>{msg}</li>
-      ))}
-    </ul>
-  </div>
-)}
-      </h2>
       <div className={styles.formContainer}>
         
       <form className={styles.form} onSubmit={handleSubmit}>
