@@ -22,6 +22,14 @@ export const addExpense = async (ex: NewExpense): Promise<Expense> => {
   return response.json();
 };
 
+export const getTotalExpenses = async (year: number, month: number): Promise<TotalExpenses> => {
+  const response = await fetch(`${API_URL}/total?year=${year}&month=${month}`);
+  if (!response.ok) {
+    throw new Error('Failed to fetch total monthly expenses data');
+  }
+  return response.json();
+};
+
 export type Expense = {
   id: number;
   category: string;
@@ -33,3 +41,7 @@ export type Expense = {
 };
 
 export type NewExpense = Omit<Expense, 'id'>;
+
+export type TotalExpenses = {
+  totalExpenses: number;
+};
